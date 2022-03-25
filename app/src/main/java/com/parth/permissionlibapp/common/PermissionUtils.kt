@@ -24,6 +24,17 @@ class PermissionUtils {
 
     companion object
     {
+        const val REQ_CODE_P_AND_BELOW = 101
+        const val REQ_CODE_Q = 102
+        const val REQ_CODE_Q_AND_ABOVE = 103
+        const val REQ_CODE_BACKGROUND_LOCATION = 104
+        const val REQ_CODE_CALL_LOG = 201
+        const val REQ_CODE_SMS = 202
+        const val REQ_CODE_CAMERA = 203
+        const val REQ_CODE_STORAGE = 204
+        const val REQ_CODE_CONTACT = 205
+        const val REQ_CODE_GPS = 206
+
         fun setLocationPermission(activity: Activity) {
 
 
@@ -43,13 +54,13 @@ class PermissionUtils {
                         builder.setMessage("Location permission required...")
                         builder.setTitle("Please grant those permissions")
                         builder.setPositiveButton("OK") { dialogInterface, i ->
-                            ActivityCompat.requestPermissions(activity, permList, 101)
+                            ActivityCompat.requestPermissions(activity, permList, REQ_CODE_P_AND_BELOW)
                         }
                         builder.setNeutralButton("Cancel", null)
                         val dialog = builder.create()
                         dialog.show()
                     }else{
-                        ActivityCompat.requestPermissions(activity, permList, 101)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_P_AND_BELOW)
                     }
 
 
@@ -80,13 +91,13 @@ class PermissionUtils {
                         builder.setMessage("Location permission required...")
                         builder.setTitle("Please grant those permissions")
                         builder.setPositiveButton("OK") { dialogInterface, i ->
-                            ActivityCompat.requestPermissions(activity, permList, 102)
+                            ActivityCompat.requestPermissions(activity, permList, REQ_CODE_Q)
                         }
                         builder.setNeutralButton("Cancel", null)
                         val dialog = builder.create()
                         dialog.show()
                     }else{
-                        ActivityCompat.requestPermissions(activity, permList, 102)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_Q)
                     }
 
                 }else{
@@ -111,13 +122,13 @@ class PermissionUtils {
                         builder.setMessage("Location permission required...")
                         builder.setTitle("Please grant those permissions")
                         builder.setPositiveButton("OK") { dialogInterface, i ->
-                            ActivityCompat.requestPermissions(activity, permList, 103)
+                            ActivityCompat.requestPermissions(activity, permList, REQ_CODE_Q_AND_ABOVE)
                         }
                         builder.setNeutralButton("Cancel", null)
                         val dialog = builder.create()
                         dialog.show()
                     }else{
-                        ActivityCompat.requestPermissions(activity, permList, 103)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_Q_AND_ABOVE)
                     }
 
                 }else if(!activity.applicationContext.checkSinglePermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)){
@@ -148,13 +159,13 @@ class PermissionUtils {
                     builder.setMessage("Call_log permission required...")
                     builder.setTitle("Please grant those permissions")
                     builder.setPositiveButton("OK") { dialogInterface, i ->
-                        ActivityCompat.requestPermissions(activity, permList, 201)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_CALL_LOG)
                     }
                     builder.setNeutralButton("Cancel", null)
                     val dialog = builder.create()
                     dialog.show()
                 }else{
-                    ActivityCompat.requestPermissions(activity, permList, 201)
+                    ActivityCompat.requestPermissions(activity, permList, REQ_CODE_CALL_LOG)
                 }
 
             }else{
@@ -173,13 +184,13 @@ class PermissionUtils {
                     builder.setMessage("SMS permission required...")
                     builder.setTitle("Please grant these permissions")
                     builder.setPositiveButton("OK") { dialogInterface, i ->
-                        ActivityCompat.requestPermissions(activity, permList, 202)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_SMS)
                     }
                     builder.setNeutralButton("Cancel", null)
                     val dialog = builder.create()
                     dialog.show()
                 }else{
-                    ActivityCompat.requestPermissions(activity, permList, 202)
+                    ActivityCompat.requestPermissions(activity, permList, REQ_CODE_SMS)
                 }
 
             }else{
@@ -198,13 +209,13 @@ class PermissionUtils {
                     builder.setMessage("SMS permission required...")
                     builder.setTitle("Please grant these permissions")
                     builder.setPositiveButton("OK") { dialogInterface, i ->
-                        ActivityCompat.requestPermissions(activity, permList, 203)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_CAMERA)
                     }
                     builder.setNeutralButton("Cancel", null)
                     val dialog = builder.create()
                     dialog.show()
                 }else{
-                    ActivityCompat.requestPermissions(activity, permList, 203)
+                    ActivityCompat.requestPermissions(activity, permList, REQ_CODE_CAMERA)
                 }
 
             }else{
@@ -228,13 +239,13 @@ class PermissionUtils {
                     builder.setMessage("Storage permissions required...")
                     builder.setTitle("Please grant those permissions")
                     builder.setPositiveButton("OK") { dialogInterface, i ->
-                        ActivityCompat.requestPermissions(activity, permList, 204)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_STORAGE)
                     }
                     builder.setNeutralButton("Cancel", null)
                     val dialog = builder.create()
                     dialog.show()
                 }else{
-                    ActivityCompat.requestPermissions(activity, permList, 204)
+                    ActivityCompat.requestPermissions(activity, permList, REQ_CODE_STORAGE)
                 }
 
             }else{
@@ -258,13 +269,13 @@ class PermissionUtils {
                     builder.setMessage("Contact permissions required...")
                     builder.setTitle("Please grant those permissions")
                     builder.setPositiveButton("OK") { dialogInterface, i ->
-                        ActivityCompat.requestPermissions(activity, permList, 204)
+                        ActivityCompat.requestPermissions(activity, permList, REQ_CODE_CONTACT)
                     }
                     builder.setNeutralButton("Cancel", null)
                     val dialog = builder.create()
                     dialog.show()
                 }else{
-                    ActivityCompat.requestPermissions(activity, permList, 204)
+                    ActivityCompat.requestPermissions(activity, permList, REQ_CODE_CONTACT)
                 }
 
             }else{
@@ -286,7 +297,7 @@ class PermissionUtils {
                         .setTitle("Background Location")
                         .setMessage("Allow background location permission for the app")
                         .setPositiveButton("Allow"){ dialog, _ ->
-                            activity.requestPermissions(backPermList, 104)
+                            activity.requestPermissions(backPermList, REQ_CODE_BACKGROUND_LOCATION)
                         }
                         .setNegativeButton("Cancel") { dialog, _ ->
                             dialog.dismiss()
@@ -322,7 +333,7 @@ class PermissionUtils {
                         // Show the dialog by calling startResolutionForResult(),
                         // and check the result in onActivityResult().
                         exception.startResolutionForResult(activity,
-                            201)
+                            REQ_CODE_GPS)
                     } catch (sendEx: IntentSender.SendIntentException) {
 
                     }
