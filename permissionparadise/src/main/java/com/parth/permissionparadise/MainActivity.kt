@@ -1,11 +1,17 @@
 package com.parth.permissionparadise
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.parth.permissionlibapp.common.PermissionUtils
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var btnLocation : Button
     private lateinit var btnStorage : Button
@@ -18,11 +24,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*initviews()
-        setOnClickListener()*/
+        initviews()
+        setOnClickListener()
     }
 
-    /*private fun setOnClickListener() {
+    private fun setOnClickListener() {
         btnMessage.setOnClickListener(this)
         btnLocation.setOnClickListener(this)
         btnCamera.setOnClickListener(this)
@@ -69,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         // Check whether the permission request was rejected.
         when (requestCode) {
-            101 -> {
+            PermissionUtils.REQ_CODE_P_AND_BELOW -> {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[1] == PackageManager.PERMISSION_GRANTED ) {
 
@@ -82,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                     PermissionUtils.permisionDenied(this)
                 }
             }
-            102 ->{
+            PermissionUtils.REQ_CODE_Q ->{
 
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[1] == PackageManager.PERMISSION_GRANTED &&
@@ -99,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                     PermissionUtils.permisionDenied(this)
                 }
             }
-            103 ->{
+            PermissionUtils.REQ_CODE_Q_AND_ABOVE ->{
 
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[1] == PackageManager.PERMISSION_GRANTED)
@@ -113,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-            104->{
+            PermissionUtils.REQ_CODE_BACKGROUND_LOCATION->{
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED){
                     PermissionUtils.showBackgroundLocationPermissionDialog(this@MainActivity)
                 }else{
@@ -121,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                         .show()
                 }
             }
-            201 ->{
+            PermissionUtils.REQ_CODE_CALL_LOG ->{
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[1] == PackageManager.PERMISSION_GRANTED)
                 {
@@ -133,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                     PermissionUtils.permisionDenied(this)
                 }
             }
-            202 ->{
+            PermissionUtils.REQ_CODE_SMS ->{
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
                     Toast.makeText(this@MainActivity, "SMS permission granted", Toast.LENGTH_SHORT)
@@ -144,7 +150,7 @@ class MainActivity : AppCompatActivity() {
                     PermissionUtils.permisionDenied(this)
                 }
             }
-            203 ->{
+            PermissionUtils.REQ_CODE_CAMERA ->{
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
                     Toast.makeText(this@MainActivity, "Camera permission granted", Toast.LENGTH_SHORT)
@@ -155,7 +161,7 @@ class MainActivity : AppCompatActivity() {
                     PermissionUtils.permisionDenied(this)
                 }
             }
-            204 ->{
+            PermissionUtils.REQ_CODE_STORAGE ->{
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED
                     && grantResults[1] == PackageManager.PERMISSION_GRANTED)
                 {
@@ -168,7 +174,7 @@ class MainActivity : AppCompatActivity() {
                     PermissionUtils.permisionDenied(this)
                 }
             }
-            205 ->{
+            PermissionUtils.REQ_CODE_CONTACT ->{
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED
                     && grantResults[1] == PackageManager.PERMISSION_GRANTED)
                 {
@@ -184,5 +190,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-*/
 }
