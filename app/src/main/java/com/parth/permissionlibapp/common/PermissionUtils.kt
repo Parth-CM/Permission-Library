@@ -284,7 +284,7 @@ class PermissionUtils {
         }
 
 
-        private fun Context.checkSinglePermission(permission: String): Boolean {
+        fun Context.checkSinglePermission(permission: String): Boolean {
             return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
         }
 
